@@ -1,0 +1,75 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from tensorflow import keras
+import json
+from tensorflow.keras.preprocessing.text import Tokenizer
+import pickle
+import numpy as np
+import re
+from unicodedata import normalize as norm
+import pandas as pd
+import os
+
+
+model = keras.models.load_model('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/model.h5')
+
+with open('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/tokenizer.pickle', 'rb') as handle:
+
+    tokenizer = pickle.load(handle)
+
+with open('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/label_encoder.pickle', 'rb') as handle:
+
+    encode_label = pickle.load(handle)
+
+
+def text_cleaner(text):
+    
+    #nltk_stopwords = stopwords.words('portuguese')
+
+    collection_text = [ {"text" : text}]
+    text = pd.DataFrame(collection_text)
+
+    text['text'] = text['text'].astype('str')
+    text['text'] = text['text'].str.lower()
+    text['text'] = text['text'].str.replace('\n',' ')
+    text['text'] = text['text'].str.replace('\r',' ')
+    text['text'] = text['text'].apply(lambda x: norm('NFKD', x).encode('ascii', 'ignore').decode())
+    text['text'] = text['text'].apply(lambda x: re.sub(r'[^a-zA-Z0-9]',' ',x))
+    text['text'] = text['text'].apply(lambda x: re.sub(r'\s+',' ',x))
+    #pat = r'\b(?:{})\b'.format('|'.join(nltk_stopwords))
+    #text['text'] = text['text'].str.replace(pat,'')
+    text = text['text'].values[0]
+
+    return text
+
+
+
+
+
+
+@csrf_exempt
+def index(request):
+
+    #received_json_data=json.loads(request.POST['data'])
+
+    data = json.loads(request.body)
+
+    print(data)
+
+
+    text = text_cleaner(data['text'])
+
+    sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
+
+    predict = model.predict(sample_converted)
+
+    class_proba = np.max(predict[0])
+
+    class_predicted = np.argmax(predict[0])
+
+    class_predicted = encode_label.inverse_transform([class_predicted])
+
+
+    return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
