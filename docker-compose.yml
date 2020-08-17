@@ -1,0 +1,17 @@
+version: "3"
+services:
+  django:
+    build:
+      dockerfile: ./dockers/django_server.dockerfile
+      context: .
+    image: juliolopes/django_server
+    container_name: django_server
+    ports:
+      - "8000:8000"
+    networks:
+      - production-network
+
+networks:
+
+  production-network:
+    driver: bridge

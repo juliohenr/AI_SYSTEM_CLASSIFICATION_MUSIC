@@ -12,14 +12,24 @@ from unicodedata import normalize as norm
 import pandas as pd
 import os
 
+import os
 
-model = keras.models.load_model('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/model.h5')
+LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 
-with open('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/tokenizer.pickle', 'rb') as handle:
+MODEL_PATH = os.path.join(LOCAL_PATH,'model.h5')
+
+PICKLE_PATH = os.path.join(LOCAL_PATH,'tokenizer.pickle')
+
+ENCODE_PATH = os.path.join(LOCAL_PATH,'label_encoder.pickle')
+
+
+model = keras.models.load_model(MODEL_PATH)
+
+with open(PICKLE_PATH, 'rb') as handle:
 
     tokenizer = pickle.load(handle)
 
-with open('/home/julio/Documentos/projetos/Sistema_para_classificação_de_Musica/API_IA/label_encoder.pickle', 'rb') as handle:
+with open(ENCODE_PATH, 'rb') as handle:
 
     encode_label = pickle.load(handle)
 
