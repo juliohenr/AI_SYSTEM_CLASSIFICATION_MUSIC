@@ -1,0 +1,185 @@
+
+
+
+.textBox {
+
+    background:linear-gradient(to right,rgb(10, 10, 10),rgb(30, 31, 30));
+
+    grid-row: 1 / 7;
+
+    grid-column: 2 / 5;
+
+
+    display: grid;
+
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 80% 10%;
+
+
+    text-align: center;
+  
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    
+}
+
+.probability {
+
+    
+
+    font-size: 10px;
+
+    color: white;
+
+    background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
+
+
+    grid-row: 8 / 13;
+
+    grid-column: 2 / 5;
+
+   
+
+    text-align: center;
+
+    border-radius: 20px;
+
+}
+
+.probabilityAllClass {
+
+    background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
+
+    font-size: 10px;
+
+    color: white;
+
+    grid-column: 6 / 10;
+
+    grid-row: 1 / 5;
+
+    text-align: center;
+
+    border-radius: 20px;
+}
+
+
+.lime {
+
+    background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
+
+    color: white;
+
+    font-size: 10px;
+
+    grid-column: 6 / 10;
+
+    grid-row: 5 / 9;
+
+    text-align: center;
+
+    border-radius: 20px;
+}
+
+.textArea {
+
+    height: 90%;
+    width: 90%;
+    border-radius: 20px;
+
+    background-color: #ffffff;
+
+    font-size: 50px;
+
+    margin: auto;
+
+ 
+}
+
+
+
+.buttonSend {
+
+    height: 80%;
+    width: 30%;
+
+    grid-column: 1 / 1;
+
+    grid-row: 3 / 3;
+
+ 
+
+    text-align: center;
+
+    
+
+    font-size: 20px;
+
+    border-radius: 10px;
+
+    background-color:#008000;
+
+    border-color: #008000;
+
+    color: white;
+}
+
+
+
+.buttonSend:hover{
+
+    background-color:#b6c9b6;
+
+    color: #073007;
+
+    border-color: #b6c9b6;;
+
+
+}
+
+
+
+
+
+
+
+.textTitle {
+
+    color: white;
+
+}
+
+
+.bar-chart-all-probabilities {
+
+
+    width: 700px;
+
+    height: 300px !important;
+
+
+}
+
+
+.bar-chart-lime {
+
+
+    width: 700px;
+
+    height: 300px !important;
+
+
+}
+
+
+.doughnut-chart {
+
+
+
+    height: 250px !important;
+
+
+}
