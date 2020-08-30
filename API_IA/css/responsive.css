@@ -4,7 +4,7 @@
 
     .app {
 
-        grid-template-rows: 50px 2000px 20px;
+        grid-template-rows: 50px 2800px 20px;
     }
     
 
@@ -16,7 +16,7 @@
         grid-gap: .10rem;
     
         grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-        grid-template-rows: 5% 5% 5% 5% 5%  5% 5% 5% 5% 5%  5% 5% 5% 5% 5%  5% 5% 5% 5% 5%;
+        grid-template-rows: 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5%;
         
         height: 100%;
         width: 100%;
@@ -25,12 +25,22 @@
 
 
 
+    #doughnut-chart {
+
+        grid-row: 3 / 3;
+    
+        grid-column: 1 / 1;
+
+    
+    }
+
+    
 
 .textBox {
 
     background:linear-gradient(to right,rgb(10, 10, 10),rgb(30, 31, 30));
 
-    grid-row: 1 / 5;
+    grid-row: 1 / 11;
 
     grid-column: 3 / 9;
 
@@ -62,10 +72,21 @@
     background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
 
 
-    grid-row: 6 / 9;
+    grid-row: 13 / 21;
 
  
     grid-column: 3 / 9;
+
+
+    display: grid;
+
+
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 10% 80%;
+
+    align-items: center;
+
+    justify-items: center;
 
 
 
@@ -86,8 +107,7 @@
 
 
 
-
-    grid-row: 10 / 14;
+    grid-row: 23 / 28;
 
  
     grid-column: 3 / 9;
@@ -111,12 +131,60 @@
 
     grid-column: 3 / 9;
 
-    grid-row: 15 / 19;
+    grid-row: 30 / 35;
 
+   
     text-align: center;
 
     border-radius: 20px;
 }
+
+
+.ValueGraphic {
+
+    grid-row: 3 / 3;
+
+    grid-column: 1 / 1;
+
+    font-size: 50px;
+
+    
+
+    color:#008000;
+
+}
+
+
+.conidenceLevel {
+
+    grid-row: 2 / 2;
+
+    grid-column: 1 / 1;
+
+    font-size: 20px;
+
+    
+
+    color:#008000;
+
+}
+
+
+.classMusic {
+
+    grid-row: 1 / 1;
+
+    grid-column: 1 / 1;
+
+    font-size: 30px;
+
+    
+
+    color:white;
+
+}
+
+
 
 
 
@@ -198,15 +266,15 @@
     grid-template-columns: 100%;
     grid-template-rows: 10% 10% 80%;
 
+    align-items: center;
+
+    justify-items: center;
 
 
     text-align: center;
 
     border-radius: 20px;
 
-    align-items: center;
-
-    justify-items: center;
 
 }
 
