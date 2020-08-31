@@ -64,22 +64,40 @@ def index(request):
 
     #received_json_data=json.loads(request.POST['data'])
 
-    data = json.loads(request.body)
 
-    print(data)
+    if request.method == 'POST':
 
+        data = json.loads(request.body)
 
-    text = text_cleaner(data['text'])
-
-    sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
-
-    predict = model.predict(sample_converted)
-
-    class_proba = np.max(predict[0])
-
-    class_predicted = np.argmax(predict[0])
-
-    class_predicted = encode_label.inverse_transform([class_predicted])
+        print(data)
 
 
-    return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
+        text = text_cleaner(data['text'])
+
+        sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
+
+        predict = model.predict(sample_converted)
+
+        class_proba = np.max(predict[0])
+
+        class_predicted = np.argmax(predict[0])
+
+        class_predicted = encode_label.inverse_transform([class_predicted])
+
+
+        dados = {"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)}
+
+        #return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
+
+        return render(request,"index.html",dados)
+
+    elif request.method == 'GET':
+
+        dados = {"class_predicted":"NO CLASS","probability":[0,1],
+        "probabilities":[0,0,0,0],
+        "lime":[0,0,0,0,0],
+        "probabilityText":"0%","confidence":"No probability"}
+
+
+        return render(request,"index.html",dados)
+

@@ -1,12 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste Layout</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href= "{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'general.css' %}">
+    <link rel="stylesheet" href= "{% static 'responsive.css' %}">
 </head>
 <body class = "app">
 
@@ -31,11 +34,11 @@
 
 <div class="probability">
 
-    <h1 class="classMusic">CLASS FUNK</h1>
+    <h1 class="classMusic">{{class_predicted}}</h1>
 
-    <h2 class="conidenceLevel">Medium Confidence</h2>
+    <h2 class="conidenceLevel">{{confidence}}</h2>
 
-    <strong class="ValueGraphic">60%</strong>
+    <strong class="ValueGraphic">{{probabilityText}}</strong>
 
     <canvas id="doughnut-chart" width="850" height="570"></canvas>
 
@@ -113,7 +116,7 @@
                         
                         label:"teste",
 
-                        data: [0.5,0.1,0.2,0.2],
+                        data: {{ probabilities }},
 
                  
 
@@ -215,7 +218,7 @@
                                     
                                     label:"teste",
 
-                                    data: [0.1,0.3,0.1,0.3,0.2],
+                                    data: {{ lime }},
 
                             
 
@@ -306,8 +309,8 @@
             {
             label: "Population (millions)",
             backgroundColor: ["#008000","transparent"],
-            borderColor: "transparent",
-            data: [0.6,0.4]
+            borderColor: 'transparent',
+            data: {{probability}}
             }
         ]
         },
