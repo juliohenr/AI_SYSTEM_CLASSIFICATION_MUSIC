@@ -12,7 +12,6 @@ from unicodedata import normalize as norm
 import pandas as pd
 import os
 
-import os
 
 LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -32,6 +31,8 @@ with open(PICKLE_PATH, 'rb') as handle:
 with open(ENCODE_PATH, 'rb') as handle:
 
     encode_label = pickle.load(handle)
+
+data = {"data":[]}
 
 
 def text_cleaner(text):
@@ -67,10 +68,12 @@ def index(request):
 
     if request.method == 'POST':
 
-        data = json.loads(request.body)
+
+        data = json.loads(json.dumps(request.POST))
 
         print(data)
 
+        #data = json.loads(request.body)
 
         text = text_cleaner(data['text'])
 
@@ -87,6 +90,15 @@ def index(request):
 
         dados = {"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)}
 
+
+        dados = {"class_predicted":class_predicted,"probability":[class_proba,1-class_proba],
+        "probabilities":predict[0],
+        "lime":[0,0,0,0,0],
+        "probabilityText":str(class_proba*100) + "%","confidence":"No probability"}
+
+        print(dados)
+
+
         #return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
 
         return render(request,"index.html",dados)
@@ -101,3 +113,56 @@ def index(request):
 
         return render(request,"index.html",dados)
 
+
+@csrf_exempt
+def results(request):
+
+    #received_json_data=json.loads(request.POST['data'])
+
+
+    if request.method == 'POST':
+
+
+        data = json.loads(json.dumps(request.POST))
+
+        print(data)
+
+        #data = json.loads(request.body)
+
+        text = text_cleaner(data['text'])
+
+        sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
+
+        predict = model.predict(sample_converted)
+
+        class_proba = np.max(predict[0])
+
+        class_predicted = np.argmax(predict[0])
+
+        class_predicted = encode_label.inverse_transform([class_predicted])
+
+
+        dados = {"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)}
+
+
+        dados = {"class_predicted":class_predicted,"probability":[class_proba,1-class_proba],
+        "probabilities":predict[0],
+        "lime":[0,0,0,0,0],
+        "probabilityText":str(class_proba*100) + "%","confidence":"No probability"}
+
+        print(dados)
+
+
+        #return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
+
+        return render(request,"index.html",dados)
+
+    elif request.method == 'GET':
+
+        dados = {"class_predicted":"NO CLASS","probability":[0,1],
+        "probabilities":[0,0,0,0],
+        "lime":[0,0,0,0,0],
+        "probabilityText":"0%","confidence":"No probability"}
+
+
+        return render(request,"index.html",dados)
