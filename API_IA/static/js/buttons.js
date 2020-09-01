@@ -11,21 +11,19 @@ function sendText () {
 
     dados = {text:text}
 
-    $.post("http://localhost:8000/results",dados).fail(function(){console.log("FAIL....")}).always(function(){
+    $.post("http://localhost:8000/results",dados).fail(function(){console.log("FAIL....")}).done(
 
-        setTimeout(
 
-            function (){
 
-                console.log("waiting")
 
-            }, 1400
-        )
+    function(){
 
-        
+        location.reload();
+
     }
+    )
 
-    ) 
 
+    
 
 }
