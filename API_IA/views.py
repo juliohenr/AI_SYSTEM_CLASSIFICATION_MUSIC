@@ -148,11 +148,22 @@ def results(request):
     print("\n")
     print("\n")
 
+    if int(class_proba*100)<50 :
+
+        confidence_status = "LOW CONFIDENCE"
+
+    elif int(class_proba*100)>=50 and int(class_proba*100)<70:
+
+        confidence_status = "MEDIUM CONFIDENCE"
+
+    else:
+
+        confidence_status = "HIGH CONFIDENCE"
 
     dados = {"class_predicted":class_predicted[0],"probability":[class_proba,1-class_proba],
     "probabilities":list(predict[0]),
     "lime":[0,0,0,0,0],
-    "probabilityText":str(int(class_proba*100)) + "%","confidence":"No probability"}
+    "probabilityText":str(int(class_proba*100)) + "%","confidence":confidence_status}
 
     data_global["data_global"] = dados
 
