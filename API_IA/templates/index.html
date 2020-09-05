@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste Layout</title>
+    <title>AI CLASSIFICATION MUSIC</title>
     <link rel="stylesheet" href= "{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/general.css' %}">
     <link rel="stylesheet" href= "{% static 'css/responsive.css' %}">
@@ -54,7 +54,7 @@
 
 <div class="probabilityAllClass">
 
-    <h1>PROBABILITIES OF ALL CLASSES</h1>
+    <h1>PROBABILITIES OF ALL CLASSES (%)</h1>
 
     <canvas class="bar-chart-all-probabilities"></canvas>
 
@@ -62,12 +62,24 @@
 
 
 
-<div class="lime">
+<div class="statistics">
 
-    <h1>LIME GRAPHIC</h1>
+    <h1 class="TitleReport">STATISTIC REPORT</h1>
 
-    <canvas class="bar-chart-lime"></canvas>
+    <h1 class="Report_word_frequency">Percentage of words in relation to the average number of words (%)</h1>
 
+    <canvas class="bar-chart-frequency-words"></canvas>
+
+    <h1 class="Report_diferent_word_frequency">Diferents words in relation to the average number of diferent words (%) </h1>
+
+    <canvas class="bar-chart-frequency-diferent-words"></canvas>
+
+    <h1 class="Most_word_frequency">the most frequent words (%)</h1>
+
+    <canvas class="bar-most-words-frequency"></canvas>
+
+
+    
 </div>
 
 
@@ -87,7 +99,11 @@
 
 var ctx = document.getElementsByClassName("bar-chart-all-probabilities")
 
-var lime = document.getElementsByClassName("bar-chart-lime")
+var word_frequency = document.getElementsByClassName("bar-chart-frequency-words")
+
+var diferent_word_frequency = document.getElementsByClassName("bar-chart-frequency-diferent-words")
+
+var most_words_frequency = document.getElementsByClassName("bar-most-words-frequency")
 
 
 var chartGraph = new Chart(ctx, {
@@ -187,17 +203,12 @@ options: {
 
 
 
-var chartGraph = new Chart(lime, {
+var chartGraph = new Chart(word_frequency, {
 
                 type:'bar',
 
                 data: {
-                    labels:["PALAVRA1",
-                            "PALAVRA2",
-                            "PALAVRA3",
-                            "PALAVRA4",
-                            "PALAVRA5"
-                            ],
+                    labels:['BOSSA NOVA','FUNK','GOSPEL','SERTANEJO'],
 
                     datasets: [
 
@@ -205,12 +216,12 @@ var chartGraph = new Chart(lime, {
                             
                             label:"teste",
 
-                            data: {{ lime }},
+                            data: {{ quantity_words_statistics }},
 
                     
 
                         
-                            backgroundColor: "#008000"
+                            backgroundColor: "#d522ecad"
                         
                         
                         
@@ -282,6 +293,202 @@ var chartGraph = new Chart(lime, {
 
 
                 })
+
+
+
+
+
+
+
+
+
+var chartGraph = new Chart(diferent_word_frequency, {
+
+type:'bar',
+
+data: {
+    labels:['BOSSA NOVA','FUNK','GOSPEL','SERTANEJO'],
+
+    datasets: [
+
+        {
+            
+            label:"teste",
+
+            data: {{ quantity_diferent_words_statistics }},
+
+    
+
+        
+            backgroundColor: "#d522ecad"
+        
+        
+        
+        
+        
+        
+        }
+    ]
+
+
+},
+
+options: {
+
+
+title: {
+
+    display:false,
+    fontSize:20,
+    text: "RELATÓRIO"
+},
+
+labels: {
+
+    fontStyle: 'bold',
+
+
+    
+},
+
+
+legend :{
+
+    display:false
+},
+
+scales: {
+yAxes: [{
+    display: true,
+    
+    gridLines: {
+        display : false
+    
+    },
+    ticks: {
+        display: true,
+        fontColor: 'white',
+        beginAtZero:true,
+        fontSize: 20
+    }
+}],
+xAxes: [{
+    gridLines: {
+        display : false
+    },
+    ticks: {
+        beginAtZero:true,
+        fontColor: 'white',
+        fontSize: 20
+    }
+}]
+},
+
+
+
+
+
+}
+
+
+})
+
+
+
+
+
+
+
+var chartGraph = new Chart(most_words_frequency, {
+
+type:'bar',
+
+data: {
+    labels:{{frequenties_words.WORDS | safe}},
+
+    datasets: [
+
+        {
+            
+            label:"teste",
+
+            data: {{frequenties_words.COUNT}},
+
+    
+
+        
+            backgroundColor: "#d522ecad"
+        
+        
+        
+        
+        
+        
+        }
+    ]
+
+
+},
+
+options: {
+
+
+title: {
+
+    display:false,
+    fontSize:20,
+    text: "RELATÓRIO"
+},
+
+labels: {
+
+    fontStyle: 'bold',
+
+
+    
+},
+
+
+legend :{
+
+    display:false
+},
+
+scales: {
+yAxes: [{
+    display: true,
+    
+    gridLines: {
+        display : false
+    
+    },
+    ticks: {
+        display: true,
+        fontColor: 'white',
+        beginAtZero:true,
+        fontSize: 20
+    }
+}],
+xAxes: [{
+    gridLines: {
+        display : false
+    },
+    ticks: {
+        beginAtZero:true,
+        fontColor: 'white',
+        fontSize: 20
+    }
+}]
+},
+
+
+
+
+
+}
+
+
+})
 
 
 

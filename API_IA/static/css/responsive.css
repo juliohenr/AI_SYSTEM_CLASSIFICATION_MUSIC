@@ -4,7 +4,7 @@
 
     .app {
 
-        grid-template-rows: 50px 2800px 20px;
+        grid-template-rows: 50px 3800px 20px;
     }
     
 
@@ -40,7 +40,7 @@
 
     background:linear-gradient(to right,rgb(10, 10, 10),rgb(30, 31, 30));
 
-    grid-row: 1 / 11;
+    grid-row: 1 / 9;
 
     grid-column: 3 / 9;
 
@@ -72,7 +72,7 @@
     background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
 
 
-    grid-row: 13 / 21;
+    grid-row: 10 / 18;
 
  
     grid-column: 3 / 9;
@@ -107,7 +107,7 @@
 
 
 
-    grid-row: 23 / 28;
+    grid-row: 19 / 24;
 
  
     grid-column: 3 / 9;
@@ -119,7 +119,7 @@
 }
 
 
-.lime {
+.statistics {
 
   
 
@@ -131,9 +131,15 @@
 
     grid-column: 3 / 9;
 
-    grid-row: 30 / 35;
+    grid-row: 25 / 39;
 
    
+
+    grid-template-columns: 100%;
+
+    grid-template-rows: 2.5% 2.5% 30% 2.5% 30% 2.5% 30%;
+
+
     text-align: center;
 
     border-radius: 20px;
@@ -187,16 +193,96 @@
 
 
 
+.TitleReport {
+
+    grid-column: 1 / 1;
+
+    grid-row: 1 / 1;
+
+
+}
+
+.Report_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 2 / 2;
+
+    font-size: 17px;
+
+    color:#d522ecad;
+
+
+}
+
+
+.bar-chart-frequency-words {
+
+    grid-column: 1 / 1;
+
+    grid-row: 3 / 3;
 
     
 }
 
-@media screen and (min-width: 1200px){
+
+
+.Report_diferent_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 4 / 4;
+
+    font-size: 17px;
+
+    color:#d522ecad;
+
+}
+
+
+.bar-chart-frequency-diferent-words {
+
+    grid-column: 1 / 1;
+
+    grid-row: 5 / 5;
+
+
+}
+
+
+
+
+.Most_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 6 / 6;
+
+    font-size: 17px;
+
+    color:#d522ecad;
+
+}
+
+
+.bar-most-words-frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 7 / 7;
+
+
+}
+
+    
+}
+
+@media screen and (min-width: 1300px){
 
 
     .app {
 
-        grid-template-rows: 50px 1200px 20px;
+        grid-template-rows: 50px 1700px 20px;
     }
     
 
@@ -208,12 +294,14 @@
     grid-gap: .50rem;
 
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
     
     height: 100%;
     width: 100%;
 
 }
+
+
 
 
 
@@ -224,7 +312,7 @@
 
     background:black;
 
-    grid-row: 1 / 5;
+    grid-row: 1 / 7;
 
     grid-column: 2 / 5;
 
@@ -256,7 +344,7 @@
     background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
 
 
-    grid-row: 6 / 10;
+    grid-row: 8 / 14;
 
     grid-column: 2 / 5;
 
@@ -334,10 +422,6 @@
 
 
 
-
-
-
-
 .probabilityAllClass {
 
    
@@ -350,7 +434,7 @@
 
     grid-column: 6 / 10;
 
-    grid-row: 1 / 4;
+    grid-row: 1 / 5;
 
     text-align: center;
 
@@ -358,7 +442,7 @@
 }
 
 
-.lime {
+.statistics {
 
   
     background:linear-gradient(to right,rgb(13, 14, 13),rgb(45, 46, 45));
@@ -369,7 +453,15 @@
 
     grid-column: 6 / 10;
 
-    grid-row: 4 / 7;
+    grid-row: 5 / 19;
+
+
+    grid-template-columns: 100%;
+
+    grid-template-rows: 2.5% 2.5% 30% 2.5% 30% 2.5% 30%;
+
+
+    display: grid;
 
     text-align: center;
 
@@ -377,9 +469,92 @@
 }
 
 
+.TitleReport {
+
+    grid-column: 1 / 1;
+
+    grid-row: 1 / 1;
 
 
+}
+
+.Report_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 2 / 2;
+
+    font-size: 17px;
 
 
     
+    color:#d522ecad;
+
+
+}
+
+
+.bar-chart-frequency-words {
+
+    grid-column: 1 / 1;
+
+    grid-row: 3 / 3;
+
+    
+
+
+}
+
+
+
+.Report_diferent_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 4 / 4;
+
+    font-size: 17px;
+
+   color:#d522ecad;
+
+
+}
+
+
+.bar-chart-frequency-diferent-words {
+
+    grid-column: 1 / 1;
+
+    grid-row: 5 / 5;
+
+
+}
+
+
+
+
+.Most_word_frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 6 / 6;
+
+    font-size: 17px;
+
+    color:#d522ecad;
+
+
+}
+
+
+.bar-most-words-frequency {
+
+    grid-column: 1 / 1;
+
+    grid-row: 7 / 7;
+
+
+}
+
+ 
 }

@@ -22,6 +22,26 @@ PICKLE_PATH = os.path.join(LOCAL_PATH,'tokenizer.pickle')
 ENCODE_PATH = os.path.join(LOCAL_PATH,'label_encoder.pickle')
 
 
+AVG_WORDS_FUNK = 24
+
+AVG_WORDS_GOSPEL = 25
+
+AVG_WORDS_SERTANEJO = 27
+
+AVG_WORDS_BOSSA_NOVA = 20
+
+
+
+AVG_DIFERENT_WORDS_FUNK = 5
+
+AVG_DIFERENT_WORDS_GOSPEL = 15
+
+AVG_DIFERENT_WORDS_SERTANEJO = 18
+
+AVG_DIFERENT_WORDS_BOSSA_NOVA = 20
+
+
+
 model = keras.models.load_model(MODEL_PATH)
 
 with open(PICKLE_PATH, 'rb') as handle:
@@ -55,6 +75,60 @@ def text_cleaner(text):
 
     return text
 
+
+
+def calculate_number_words(text):
+
+    quantity_of_words = text.split(" ")
+
+    quantity_of_words = len(quantity_of_words)
+
+    return quantity_of_words
+
+
+
+def calculate_number_diferent_words(text):
+
+    quantity_of_diferent_words = text.split(" ")
+
+    quantity_of_diferent_words = set(quantity_of_diferent_words)
+
+    quantity_of_diferent_words = list(quantity_of_diferent_words)
+
+    quantity_of_diferent_words = len(quantity_of_diferent_words)
+
+    return quantity_of_diferent_words
+
+
+def calculate_most_frequents_words(text,number_words=5):
+
+    words_split = text.split(" ")
+
+    qnt_words = len(words_split)
+
+    df_words = pd.DataFrame({"WORDS":words_split})
+
+    df_words["COUNT"] = 1
+
+    df_words = df_words.groupby("WORDS").count().sort_values(by=['COUNT'],ascending=False)
+
+    df_words["COUNT"] = df_words["COUNT"]/qnt_words
+
+    df_words['WORDS'] =  list(df_words.index)
+
+    df_words.reset_index(drop=True,inplace=True)
+
+    frequenties_words = list(df_words['WORDS'].values)
+
+    frequenties_words = frequenties_words[0:number_words]
+
+    frequenty = list(df_words['COUNT'].values*100)
+
+    frequenty = frequenty[0:number_words]
+
+
+
+    return {"WORDS":frequenties_words,"COUNT":frequenty}
 
 
 
@@ -114,6 +188,9 @@ def index(request):
 @csrf_exempt
 def results(request):
 
+
+    
+
     #received_json_data=json.loads(request.POST['data'])
 
 
@@ -123,6 +200,25 @@ def results(request):
     #data = json.loads(request.body)
 
     text = text_cleaner(data['text'])
+
+    number_of_words = calculate_number_words(text)
+
+    number_of_diferent_words = calculate_number_diferent_words(text)
+
+    frequenties_words = calculate_most_frequents_words(text,number_words=5)
+
+    quantity_words_statistics = [ 100*(number_of_words/AVG_WORDS_BOSSA_NOVA - 1),
+                                 100*(number_of_words/AVG_WORDS_FUNK - 1),
+                                100*(number_of_words/AVG_WORDS_GOSPEL - 1),
+                                 100*(number_of_words/AVG_WORDS_SERTANEJO - 1)]
+
+
+    quantity_diferent_words_statistics = [100*(number_of_diferent_words/AVG_DIFERENT_WORDS_BOSSA_NOVA - 1),
+                                        100*(number_of_diferent_words/AVG_DIFERENT_WORDS_FUNK - 1) ,
+                                        100*(number_of_diferent_words/AVG_DIFERENT_WORDS_GOSPEL - 1),
+                                         100*(number_of_diferent_words/AVG_DIFERENT_WORDS_SERTANEJO - 1)]
+
+
 
     sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
 
@@ -161,9 +257,11 @@ def results(request):
         confidence_status = "HIGH CONFIDENCE"
 
     dados = {"class_predicted":class_predicted[0],"probability":[class_proba,1-class_proba],
-    "probabilities":list(predict[0]),
-    "lime":[0,0,0,0,0],
-    "probabilityText":str(int(class_proba*100)) + "%","confidence":confidence_status}
+    "probabilities":list(predict[0]*100),
+    "probabilityText":str(int(class_proba*100)) + "%","confidence":confidence_status,
+    "quantity_words_statistics":quantity_words_statistics,
+    "quantity_diferent_words_statistics":quantity_diferent_words_statistics,
+    "frequenties_words":frequenties_words}
 
     data_global["data_global"] = dados
 
