@@ -154,17 +154,6 @@ def index(request):
 
         dados = data_global["data_global"]
 
-        print("\n")
-        print("\n")
-        print("\n")
-
-
-        print(data_global["data_global"])
-
-        print("\n")
-        print("\n")
-        print("\n")
-
         #return JsonResponse({"class_predicted":class_predicted.tolist()[0],"proba_predicted":class_proba.astype(float)})
 
         return render(request,"index.html",dados)
@@ -172,16 +161,6 @@ def index(request):
     else:
 
 
-        print("\n")
-        print("\n")
-        print("\n")
-
-
-        print(data_global["data_global"])
-
-        print("\n")
-        print("\n")
-        print("\n")
 
         dados = {"class_predicted":"NO CLASS","probability":[0,1],
         "probabilities":[0,0,0,0],
@@ -241,17 +220,6 @@ def results(request):
 
     all_classes = encode_label.inverse_transform([0,1,2,3])
 
-    print("\n")
-    print("\n")
-    print("\n")
-    print("\n")
-
-    print(all_classes)
-
-    print("\n")
-    print("\n")
-    print("\n")
-    print("\n")
 
     if int(class_proba*100)<50 :
 
