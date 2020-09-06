@@ -11,7 +11,7 @@ function sendText () {
 
     dados = {text:text}
 
-    $.post("http://localhost:8000/results",dados).fail(function(){console.log("FAIL....")}).done(
+    $.post("http://0.0.0.0:8000/results",dados).fail(function(){console.log("FAIL....")}).done(
 
 
 

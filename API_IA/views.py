@@ -12,6 +12,9 @@ from unicodedata import normalize as norm
 import pandas as pd
 import os
 from django.shortcuts import redirect
+import nltk
+from nltk.corpus import stopwords
+
 
 LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,23 +25,23 @@ PICKLE_PATH = os.path.join(LOCAL_PATH,'tokenizer.pickle')
 ENCODE_PATH = os.path.join(LOCAL_PATH,'label_encoder.pickle')
 
 
-AVG_WORDS_FUNK = 24
+AVG_WORDS_FUNK = 151
 
-AVG_WORDS_GOSPEL = 25
+AVG_WORDS_GOSPEL = 103
 
-AVG_WORDS_SERTANEJO = 27
+AVG_WORDS_SERTANEJO = 103
 
-AVG_WORDS_BOSSA_NOVA = 20
+AVG_WORDS_BOSSA_NOVA = 88
 
 
 
-AVG_DIFERENT_WORDS_FUNK = 5
+AVG_DIFERENT_WORDS_FUNK = 65
 
-AVG_DIFERENT_WORDS_GOSPEL = 15
+AVG_DIFERENT_WORDS_GOSPEL = 51
 
-AVG_DIFERENT_WORDS_SERTANEJO = 18
+AVG_DIFERENT_WORDS_SERTANEJO = 54
 
-AVG_DIFERENT_WORDS_BOSSA_NOVA = 20
+AVG_DIFERENT_WORDS_BOSSA_NOVA = 53
 
 
 
@@ -57,7 +60,7 @@ data_global = {"data_global":None}
 
 def text_cleaner(text):
     
-    #nltk_stopwords = stopwords.words('portuguese')
+    nltk_stopwords = stopwords.words('portuguese')
 
     collection_text = [ {"text" : text}]
     text = pd.DataFrame(collection_text)
@@ -69,8 +72,8 @@ def text_cleaner(text):
     text['text'] = text['text'].apply(lambda x: norm('NFKD', x).encode('ascii', 'ignore').decode())
     text['text'] = text['text'].apply(lambda x: re.sub(r'[^a-zA-Z0-9]',' ',x))
     text['text'] = text['text'].apply(lambda x: re.sub(r'\s+',' ',x))
-    #pat = r'\b(?:{})\b'.format('|'.join(nltk_stopwords))
-    #text['text'] = text['text'].str.replace(pat,'')
+    pat = r'\b(?:{})\b'.format('|'.join(nltk_stopwords))
+    text['text'] = text['text'].str.replace(pat,'')
     text = text['text'].values[0]
 
     return text
@@ -81,6 +84,8 @@ def calculate_number_words(text):
 
     quantity_of_words = text.split(" ")
 
+    quantity_of_words = [i for i in quantity_of_words if i!=""]
+
     quantity_of_words = len(quantity_of_words)
 
     return quantity_of_words
@@ -90,6 +95,8 @@ def calculate_number_words(text):
 def calculate_number_diferent_words(text):
 
     quantity_of_diferent_words = text.split(" ")
+
+    quantity_of_diferent_words = [i for i in quantity_of_diferent_words if i!=""]
 
     quantity_of_diferent_words = set(quantity_of_diferent_words)
 
@@ -103,6 +110,8 @@ def calculate_number_diferent_words(text):
 def calculate_most_frequents_words(text,number_words=5):
 
     words_split = text.split(" ")
+
+    words_split = [i for i in words_split if i!=""]
 
     qnt_words = len(words_split)
 
