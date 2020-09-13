@@ -208,7 +208,9 @@ def results(request):
 
 
 
-    sample_converted = tokenizer.texts_to_matrix([text],mode='tfidf')
+    sample_converted = tokenizer.transform([text])
+
+    sample_converted = sample_converted.toarray()
 
     predict = model.predict(sample_converted)
 
