@@ -2,7 +2,7 @@
 
 ## Resumo
 
-Este projeto consiste em uma inteligência artificial, a qual foi desenvolvida utilizando técnicas de redes neurais, para classificação de gênero musicais. Esta Inteligência Artificial classifica apenas 4 gêneros musicais os quais são: BOSSA NOVA, FUNK, SERTANEJO e GOSPEL.
+Este projeto consiste em uma inteligência artificial, a qual foi desenvolvida utilizando técnicas de redes neurais, para classificação de gêneros musicais. Esta Inteligência Artificial classifica apenas 4 gêneros musicais os quais são: BOSSA NOVA, FUNK, SERTANEJO e GOSPEL.
 
 ## Tecnologias Utilizadas
 
