@@ -7,10 +7,12 @@ Este projeto consiste em uma inteligência artificial, a qual foi desenvolvida u
 ## Tecnologias Utilizadas
 
 <ul>
+<li>Python 3.7</li>
 <li>Django</li>
+<li>Jupyter Notebook</li>
 <li>Jquery</li>
 <li>Docker</li>
-<li>Python 3.7</li>
+
 </ul>  
 
 
