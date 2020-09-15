@@ -15,7 +15,7 @@ Este projeto consiste em uma inteligência artificial, a qual foi desenvolvida u
 
 ## Interface
 
-A interface desenvolvida é responsiva e contém 6 elementos, os quais são: text box, probabilidades das classes, índice de confiança da classe com maior proba, relatório com o comparativo da quantidade de tokens com a quantidade média de token das bases de cada classe, relatório com o comparativo da quantidade de tokens diferentes com a quantidade média de tokens diferentes das bases de cada classe e o relatório com as palavras mais frequentes. Abaixo será exibido cada elemento.
+A interface desenvolvida é responsiva e contém 6 elementos, os quais são: text box, probabilidades das classes, índice de confiança da classe com maior proba, relatório com o comparativo da quantidade de tokens com a quantidade média de tokens das bases de cada classe, relatório com o comparativo da quantidade de tokens diferentes com a quantidade média de tokens diferentes das bases de cada classe e o relatório com as palavras mais frequentes. Abaixo será exibido cada elemento.
 
 ### Interface Completa
 
@@ -31,24 +31,27 @@ Este elemento contém o input onde o usuário insere o texto e envia para Inteli
 ### Probabilidades das Classes
 
 Este elemento contém um gráfico de barras com o proba calculado pela Inteligência Artificial de cada classe 
+![probabilidades](https://user-images.githubusercontent.com/40969977/93153071-bcd91900-f6d6-11ea-96a6-a622a06a94a1.png)
+
 
 ### Índice de confiança da classe com maior proba
 
 Este elemento exibe o valor do índice de confiança da classe que obteve a maior probabilidade 
-
+![indice](https://user-images.githubusercontent.com/40969977/93152984-87ccc680-f6d6-11ea-9af6-54f637cc0201.png)
 
 ### Relatório com o comparativo da quantidade de tokens com a quantidade média de tokens das bases de cada classe em percentual
 
 No exemplo abaixo a amostra (letra de música) tem aproximadamente 80% a menos de tokens comparado com as bases de desenvolvimento de cada classe
-
+![diferents_words](https://user-images.githubusercontent.com/40969977/93152870-37556900-f6d6-11ea-93a3-41cb1dc11872.png)
 
 ### Relatório com o comparativo da quantidade de tokens diferentes com a quantidade média de tokens diferentes das bases de desenvolvimento em percentual
 
 No exemplo abaixo a amostra (letra de música) tem aproximadamente 70% a menos de tokens diferentes comparado com as bases de desenvolvimento de cada classe
-
+![diferents](https://user-images.githubusercontent.com/40969977/93153097-d2e6d980-f6d6-11ea-883a-636d20c3b8a3.png)
 
 ### Relatório com as palavras mais frequentes em percentual
 
 No exemplo abaixo a amostra (letra de música) tem como a palavra mais frequente "dançar", e a mesma representa aproximadamente 18% da amostra
 
+![frequents_words](https://user-images.githubusercontent.com/40969977/93152961-72579c80-f6d6-11ea-945b-11853143c274.png)
 
