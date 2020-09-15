@@ -55,3 +55,13 @@ No exemplo abaixo a amostra (letra de música) tem como a palavra mais frequente
 
 ![frequents_words](https://user-images.githubusercontent.com/40969977/93152961-72579c80-f6d6-11ea-945b-11853143c274.png)
 
+
+## Execução 
+
+É necessário a instalação das dependências através do comando "pip install -r requirements.txt". Após a instalação das dependências o usuário pode iniciar a aplicação através do comando "python manage.py runserver 0.0.0.0:8000" 
+
+## Execução pelo docker
+
+É possível iniciar a aplicação pelo docker também. Na pasta dockers contém um dockerfile e na raiz um docker-compose para buildar a aplicação, logo o usuário pode rodar o "docker-compose build" e em seguida o "docker-compose up"
+
+
