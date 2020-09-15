@@ -73,7 +73,7 @@ Na pasta MODEL contém o jupyter notebook com todas as etapas de desenvolvimento
 
 ![exploratory](https://user-images.githubusercontent.com/40969977/93154761-d4b29c00-f6da-11ea-9b6b-bea34e817bae.png)
 
-Foi realizado também neste jupyter notebook alguns testes com diferentes configurações de redes neurais, para mais detalhes da etapa 
+Foi realizado também neste jupyter notebook alguns testes com diferentes configurações de redes neurais. Este jupyter tem como dependência o pacote anaconda 3 
 
 
 
