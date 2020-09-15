@@ -68,12 +68,16 @@ No exemplo abaixo a amostra (letra de música) tem como a palavra mais frequente
 
 ## Desenvolvimento do modelo
 
-Na pasta MODEL contém o jupyter notebook com todas as etapas de desenvolvimento do modelo, e as bases utilizadas. No jupyter é realizado uma análise exploratória com o intuito de entender os detalhes das bases utilizadas de cada classe, no mesmo é feito diversas visualizações como por exemplo as palavras diferentes entre as classes e mais frequentes em cada uma, como pode ser visto na figura abaixo: 
+O jupyter notebook utilizado no desenvolvimento do modelo tem como dependência o pacote anaconda 3. Na pasta MODEL contém o jupyter com todas as etapas de desenvolvimento do modelo, e as bases utilizadas. No jupyter é realizado uma análise exploratória com o intuito de entender os detalhes dos textos utilizados em cada classe, no mesmo é feito diversas visualizações como por exemplo as palavras mais frequentes em uma das classes, como pode ser visto na figura abaixo: 
 
 
 ![exploratory](https://user-images.githubusercontent.com/40969977/93154761-d4b29c00-f6da-11ea-9b6b-bea34e817bae.png)
 
-Foi realizado também neste jupyter notebook alguns testes com diferentes configurações de redes neurais. Este jupyter tem como dependência o pacote anaconda 3 
+
+
+
+
+Foi realizado também neste jupyter notebook alguns testes com diferentes configurações de redes neurais. 
 
 
 
