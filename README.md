@@ -10,6 +10,7 @@ Este projeto consiste em uma inteligência artificial, a qual foi desenvolvida u
 <li>Django</li>
 <li>Jquery</li>
 <li>Docker</li>
+<li>Python 3.7</li>
 </ul>  
 
 
@@ -24,7 +25,7 @@ A interface desenvolvida é responsiva e contém 6 elementos, os quais são: tex
 
 ### Elemento Text Box
 
-Este elemento contém o input onde o usuário insere o texto e envia para Inteligência Artificial
+Este elemento contém o input para o usuário inserir o texto e enviar para Inteligência Artificial
 
 ![text_box](https://user-images.githubusercontent.com/40969977/93150437-7fbd5880-f6cf-11ea-8d38-7248cb154bca.png)
 
@@ -39,14 +40,14 @@ Este elemento contém um gráfico de barras com o proba calculado pela Inteligê
 Este elemento exibe o valor do índice de confiança da classe que obteve a maior probabilidade 
 ![indice](https://user-images.githubusercontent.com/40969977/93152984-87ccc680-f6d6-11ea-9af6-54f637cc0201.png)
 
-### Relatório com o comparativo da quantidade de tokens com a quantidade média de tokens das bases de cada classe em percentual
+### Relatório com o comparativo da quantidade de tokens com a quantidade média de tokens da base de cada classe em percentual
 
-No exemplo abaixo a amostra (letra de música) tem aproximadamente 80% a menos de tokens comparado com as bases de desenvolvimento de cada classe
+No exemplo abaixo a amostra (letra de música) tem aproximadamente 80% a menos de tokens comparado com as bases de desenvolvimento utilizadas para cada classe
 ![diferents_words](https://user-images.githubusercontent.com/40969977/93152870-37556900-f6d6-11ea-93a3-41cb1dc11872.png)
 
-### Relatório com o comparativo da quantidade de tokens diferentes com a quantidade média de tokens diferentes das bases de desenvolvimento em percentual
+### Relatório com o comparativo da quantidade de tokens diferentes com a quantidade média de tokens diferentes da base de cada classe em percentual
 
-No exemplo abaixo a amostra (letra de música) tem aproximadamente 70% a menos de tokens diferentes comparado com as bases de desenvolvimento de cada classe
+No exemplo abaixo a amostra (letra de música) tem aproximadamente 70% a menos de tokens diferentes comparado com as bases de desenvolvimento para cada classe
 ![diferents](https://user-images.githubusercontent.com/40969977/93153097-d2e6d980-f6d6-11ea-883a-636d20c3b8a3.png)
 
 ### Relatório com as palavras mais frequentes em percentual
@@ -63,5 +64,16 @@ No exemplo abaixo a amostra (letra de música) tem como a palavra mais frequente
 ## Execução pelo docker
 
 É possível iniciar a aplicação pelo docker também. Na pasta dockers contém um dockerfile e na raiz um docker-compose para buildar a aplicação, logo o usuário pode rodar o "docker-compose build" e em seguida o "docker-compose up"
+
+
+## Desenvolvimento do modelo
+
+Na pasta MODEL contém o jupyter notebook com todas as etapas de desenvolvimento do modelo, e as bases utilizadas. No jupyter é realizado uma análise exploratória com o intuito de entender os detalhes das bases utilizadas de cada classe, no mesmo é feito diversas visualizações como por exemplo as palavras diferentes entre as classes e mais frequentes em cada uma, como pode ser visto na figura abaixo: 
+
+
+![exploratory](https://user-images.githubusercontent.com/40969977/93154761-d4b29c00-f6da-11ea-9b6b-bea34e817bae.png)
+
+Foi realizado também neste jupyter notebook alguns testes com diferentes configurações de redes neurais, para mais detalhes da etapa 
+
 
 
